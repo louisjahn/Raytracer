@@ -4,7 +4,7 @@ This project is based on Peter Shirley's [Ray Tracing in One Weekend](https://ra
 
 In this project, I try to follow the book's instructions and also add my own touch to this Raytracer implementation.
 
-I don't have any precise goal besides just having fun and enjoying graphics development :)
+I don't have any precise goal besides just having fun and enjoying graphics programming 😀
 
 Current list of features
 - Materials
