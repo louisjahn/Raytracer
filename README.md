@@ -6,6 +6,19 @@ In this project, I try to follow the book's instructions and also add my own tou
 
 I don't have any precise goal besides just having fun and enjoying graphics development :)
 
+Current list of features
+- Materials
+    - Dielectric (transparent)
+    - Metal
+    - Lambertian (matte)
+- Shapes
+    - Spheres
+- Camera effects
+    - Depth of field
+    - Rotation and transformation
+- Others
+    - Basic multithreading implementation
+
 Here are a few images from the gallery:
 
 ![](./Gallery/dual.jpg)
