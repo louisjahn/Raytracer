@@ -15,13 +15,13 @@ public:
     explicit lambertian(const color &a): albedo(a) {}
     lambertian(const lambertian &copy): albedo(copy.albedo) {}
 
-    virtual ~lambertian() = default;
+    ~lambertian() override = default;
 
     lambertian &operator=(const lambertian &copy);
 
-    virtual bool scatter(
+    bool scatter(
             const ray &r_in, const hit_record &rec, color &attenuation, ray &scattered
-    ) const;
+    ) const override;
 
 public:
     color albedo;

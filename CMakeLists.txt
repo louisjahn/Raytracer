@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(./include)
 
-add_executable(Raytracer___intro main.cpp src/sphere.cpp src/vec3.cpp src/hittable_list.cpp src/camera.cpp src/lambertian.cpp src/metal.cpp src/dielectric.cpp)
+add_executable(Raytracer___intro main.cpp src/sphere.cpp src/vec3.cpp src/hittable_list.cpp src/camera.cpp src/lambertian.cpp src/metal.cpp src/dielectric.cpp include/moving_sphere.h src/moving_sphere.cpp)

@@ -11,7 +11,9 @@ camera::camera(const point3 &lookfrom,
                double       vfov, // vertical field-of-view in degrees
                double       aspect_ratio,
                double       aperture,
-               double       focus_dist)
+               double       focus_dist,
+               double       _time0 = 0,
+               double       _time1 = 0)
 {
     double theta = degrees_to_radians(vfov);
     double h = tan(theta / 2);
@@ -28,6 +30,8 @@ camera::camera(const point3 &lookfrom,
     lower_left_corner = origin - horizontal/2 - vertical/2 - focus_dist * w;
 
     lens_radius = aperture / 2;
+    time0 = _time0;
+    time1= _time1;
 }
 
 camera::camera(const camera &copy)
@@ -40,6 +44,8 @@ camera::camera(const camera &copy)
     v = copy.v;
     w = copy.w;
     lens_radius = copy.lens_radius;
+    time0 = copy.time0;
+    time1 = copy.time1;
 }
 
 camera &camera::operator=(const camera &copy)
@@ -54,6 +60,8 @@ camera &camera::operator=(const camera &copy)
         v = copy.v;
         w = copy.w;
         lens_radius = copy.lens_radius;
+        time0 = copy.time0;
+        time1 = copy.time1;
     }
     return *this;
 }
@@ -62,5 +70,9 @@ ray camera::get_ray(double s, double t) const
 {
     vec3 rd = lens_radius * random_in_unit_disk();
     vec3 offset = u * rd.x() + v * rd.y();
-    return ray(origin + offset, lower_left_corner + s*horizontal + t*vertical - origin - offset);
+    return {
+        origin + offset,
+        lower_left_corner + s * horizontal + t * vertical - origin - offset,
+        random_double(time0, time1)
+    };
 }

@@ -26,7 +26,7 @@ bool dielectric::scatter(const ray &r_in, const hit_record &rec, color &attenuat
     if (etai_over_etat * sin_theta > 1.0 )
     {
         vec3 reflected = reflect(unit_direction, rec.normal);
-        scattered = ray(rec.p, reflected);
+        scattered = ray(rec.p, reflected, r_in.time());
         return true;
     }
 
@@ -35,12 +35,12 @@ bool dielectric::scatter(const ray &r_in, const hit_record &rec, color &attenuat
     if (random_double() < reflect_prob)
     {
         vec3 reflected = reflect(unit_direction, rec.normal);
-        scattered = ray(rec.p, reflected);
+        scattered = ray(rec.p, reflected, r_in.time());
         return true;
     }
 
     // Refract
     vec3 refracted = refract(unit_direction, rec.normal, etai_over_etat);
-    scattered = ray(rec.p, refracted);
+    scattered = ray(rec.p, refracted, r_in.time());
     return true;
 }

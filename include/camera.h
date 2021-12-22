@@ -11,13 +11,15 @@
 class camera
 {
 public:
-    camera(const point3 &lookfrom,
-           const point3 &lookat,
-           const vec3   &vup,
-           double       vfov, // vertical field-of-view in degrees
-           double       aspect_ratio,
-           double       aperture,
-           double       focus_dist);
+    camera(const point3& lookfrom,
+           const point3& lookat,
+           const vec3&   vup,
+           double        vfov, // vertical field-of-view in degrees
+           double        aspect_ratio,
+           double        aperture,
+           double        focus_dist,
+           double        _time0,
+           double        _time1);
 
     camera(const camera &copy);
     camera &operator=(const camera &copy);
@@ -30,6 +32,7 @@ private:
     vec3 vertical;
     vec3 u, v, w;
     double lens_radius;
+    double time0, time1;
 };
 
 

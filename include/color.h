@@ -28,15 +28,12 @@ inline void write_color(color &pixel, const color &pixel_color, size_t samples_p
     // visual quality.
 
     // Why not just divide members directly? Is it faster by doing so?
+    // A: Optimization, divide only once because multiplications are much faster
     double scale = 1.0 / samples_per_pixel;
     r = sqrt(scale * r);
     g = sqrt(scale * g);
     b = sqrt(scale * b);
 
-    // Write the translated [0,255] value of each color component.
-//    out << static_cast<int>(256 * clamp(r, 0.0, 0.999)) << ' '
-//        << static_cast<int>(256 * clamp(g, 0.0, 0.999)) << ' '
-//        << static_cast<int>(256 * clamp(b, 0.0, 0.999)) << '\n';
     pixel.e[0] = static_cast<int>(256 * clamp(r, 0.0, 0.999));
     pixel.e[1] = static_cast<int>(256 * clamp(g, 0.0, 0.999));
     pixel.e[2] = static_cast<int>(256 * clamp(b, 0.0, 0.999));

@@ -14,11 +14,11 @@ class sphere: public hittable {
         sphere(const point3 &cen, double r, material *mat) : center(cen), radius(r), mat(mat) {};
         sphere(const sphere &copy) : center(copy.center), radius(copy.radius), mat(copy.mat) {};
 
-        virtual ~sphere();
+        ~sphere() override;
 
         sphere &operator=(const sphere &copy);
 
-    virtual bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const;
+    bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const override;
     public:
         point3 center;
         double radius;
